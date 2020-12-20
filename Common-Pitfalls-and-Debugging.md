@@ -33,22 +33,24 @@ Without quotes, the character escaping won't be transferred to the `sh -c $comma
 
 ### A process waits for input
 
-Sometimes some process waits for input. For instance, a package manager may wait for confirmation (`y/n`).
+Sometimes processes may wait for user input.
+For instance, most package manager wait for some kind of confirmation (`y/n`).
 
-In this case you can send the desired input to the process via:
+If this is the case, you can simply send the desired input to the process via the `send` subcommand:
 
 ```bash
 pueue send "y
 "
 ```
 
-This can be also be avoided by issuing the command with something like a `-y` flag (if the program allows something like this).
+However, this can often be avoided by adding something like a `--yes` flag to the command with.
+Given that the called command provides this flag.
 
 ### My shell aliases don't work
 
-Pueue doesn't support aliases in shell's `.*rc` files, since that's pretty tricky.
+Pueue doesn't support aliases in your shell's `.*rc` files, since that's pretty tricky.
 That's why Pueue brings it's own aliasing.
-Check the [Miscellaneous section](https://github.com/Nukesor/pueue/wiki/Miscellaneous) on how to use it.
+Check the [miscellaneous section](https://github.com/Nukesor/pueue/wiki/Miscellaneous) on how to use it.
 
 ### Display not found
 

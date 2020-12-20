@@ -33,11 +33,12 @@ The `cpu` group will now always run up to two tasks at the same time.
 ### Pueue status with groups
 
 By default, the `status` command shows all groups with any tasks.\
-If you have too many groups, you can specify a group to only see this group's tasks.
+If you have too many groups, you can also look at a specific group with the `status --group $NAME` option.
 
 ### Pause and resume specific groups
 
-Just as `pause` and `start` pause/resume the whole daemon and all running tasks, you can also pause/resume groups and their tasks.\
-To pause a specific group add the `-g` flag.
+Just as `pause` and `start` pauses/resumes the whole daemon and all running tasks, you can also pause/resume groups and their tasks.\
+To pause a specific group use the `--group` flag.
 
-For instance, `pueue pause -g cpu` will pause all tasks in the `cpu` group. This also stops any new tasks from being started in this group.
+For instance, `pueue pause -g cpu` will pause all tasks in the `cpu` group.
+This also stops any new tasks from being started in this group.
