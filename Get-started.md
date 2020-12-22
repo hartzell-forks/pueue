@@ -53,10 +53,17 @@ The command will then be added and scheduled for execution, as if you executed i
 For normal operation it's recommended to add an alias to your shell's rc.\
 E.g.: `alias pad='pueue add --'`
 
-Surrounding a command with quotes is also required, if your command contains escaped characters.\
-For instance `pueue add ls /tmp/long\ path` will result in the execution of `sh -c ls /tmp/long path`, which will then break, as the escaped space is not passed to Pueue.
+You also have to pay attention, whether case your command contains escaped characters.
+For instance, `pueue add ls /tmp/long\ path` will result in the execution of `sh -c ls /tmp/long path`, which will result in `/tmp/long` and `path` being interpreted as two different parameters.
 
-If you're having trouble, please take a look at the [common pitfalls](https://github.com/Nukesor/pueue/wiki/Common-Pitfalls-and-Debugging) page.
+There are two different approaches to solve this problem: 
+
+1. Surrounding the command with quotes, e.g. `pueue add "ls /tmp/long\ path"`
+    This is the safest approach, since it simply passes the command to the shell, without resolving any escaped strings. \
+2. Use the `--escape` flag, which automatically escapes the command, e.g. `pueue add --escape ls /tmp/long\ path`
+    However, this also escapes shell specific operators such as `&&` or `&>` and thereby breaks them.
+
+If you're having trouble with anything, please take a look at the [common pitfalls](https://github.com/Nukesor/pueue/wiki/Common-Pitfalls-and-Debugging) page.
 
 ### See what's going on
 
